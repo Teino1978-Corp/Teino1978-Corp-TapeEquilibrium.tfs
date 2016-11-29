@@ -1,0 +1,79 @@
+// IT_working.cpp : Defines the entry point for the console application.
+//
+#include <iostream>
+#include <cstdlib>
+#include <climits>
+
+using namespace std;
+
+class Solution {
+public :
+	int plenty;
+	//int P;
+	int *A;
+	Solution() {
+
+		//this->plenty = pe;
+		//this->P = pz;
+
+	}
+	void input_data() {
+		do
+		{
+			cout << "please Enter the plenty of the Array that you want to create : " << endl;
+			cin >> this->plenty;
+
+		} while (this->plenty <= 0);
+
+		this->A = new int[this->plenty];
+		for (int i = 0;i < this->plenty;i++) {
+			cout << "please Enter the A[" << i << "] Array : " << endl;
+			cin >> A[i];
+		}
+	 }
+
+	double diffrence_count() {
+		double sum1=0;
+		double sum2=0;
+		double dif = 0;
+		double ans = 0;
+		for (int k = 0;k < this->plenty;k++) {
+			ans += this->A[k];
+		}
+		//we want the program with O(1) space copsulity so :
+		for (int p = 1;p < (this->plenty - 1);p++) {
+			for (int i = 0;i < p;i++) {
+				sum1 += this->A[i];
+			}
+			for (int j = p;j < this->plenty;j++) {
+				sum2 += this->A[j];
+			}
+			cout << sum1 << endl;
+			cout << sum2 << endl;
+			dif = abs((sum1 - sum2));
+			if (ans > dif) {
+				ans = dif;
+			}
+			sum1 = 0;
+			sum2 = 0;
+			
+
+		}
+		return ans;
+	}
+
+
+
+};
+
+int main()
+{
+	Solution A;
+	A.input_data();
+	double answ;
+	answ = A.diffrence_count();
+	cout << "the result is equal with : " << answ << endl;
+	int x;
+	cin >> x;
+    return 0;
+}
